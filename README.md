@@ -58,3 +58,6 @@ Syntastic
 
 https://github.com/vim-syntastic/syntastic
 
+Supertab
+
+https://github.com/ervandew/supertab
