@@ -18,9 +18,9 @@ set autoindent
 " automatically inserts one extra level of identation
 set smartindent
 " number of space characters inserted for identation
-set shiftwidth=4
+set shiftwidth=2
 " set the number of columns occupied by a tab character
-set tabstop=4
+set tabstop=2
 " turn on the option to highlight search results
 set hlsearch
 " set syntax on
@@ -52,11 +52,27 @@ nnoremap <F12>o :exe '! google-chrome % &'<CR>
 "Avoid needing to press Ctrl-X then Ctrl-O to invoke the popup completion menu
 "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
+
+" run everytime pathogen 
+" easy access to the plugins
+execute pathogen#infect()
+
 " Turn on Omni Completion
-filetype plugin on
+filetype plugin indent on
 
 " turn on syntax completion for all
 set omnifunc=syntaxcomplete#Complete
+
+" automatically starts NERDTree
+autocmd vimenter * NERDTree
+
+"Open a NerdTree automatically when vim starts up if no files where specified
+
+autocmd StdinReadPre * let s:std_in =1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+"Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " enable auto-complete every time a HTML file is opened
 "autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -67,9 +83,6 @@ set omnifunc=syntaxcomplete#Complete
 " enable PHP autocomplete every time you open a PHP file
 "autocmd Filetype php set omnifunc=phpcomplete#CompletePHP
 
-" run everytime pathogen 
-" easy access to the plugins
-execute pathogen#infect()
 
 " syntastic settings
 let g:airline#extensions#syntastic#enabled=1
