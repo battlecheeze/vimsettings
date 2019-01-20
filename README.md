@@ -61,3 +61,36 @@ https://github.com/vim-syntastic/syntastic
 Supertab
 
 https://github.com/ervandew/supertab
+
+YouCompleteMe
+
+Optional
+
+Do not install Supertab and AutocomplPop
+
+Before installing YCM be sure to have the ff: (in OpenSuse 15)
+
+python-devel
+python3-devel
+C/C++ Development (For Programming C)
+
+To install
+
+Search for C/C++ Development
+sudo zypper se -t pattern devel_C_C++
+
+if not installed then
+
+sudo zypper in -t pattern devel_C_C++
+
+then
+
+sudo zypper in python-devel python3-devel
+
+then
+
+git clone https://github.com/Valloric/YouCompleteMe.git
+cd YouCompleteMe
+git submodule update --init --recursive
+./install.py --all (Warning: This will install 390MB of data)
+
