@@ -50,7 +50,7 @@ nnoremap <F12>o :exe '! google-chrome % &'<CR>
 
 " SuperTab should be installed to work check the repositories
 "Avoid needing to press Ctrl-X then Ctrl-O to invoke the popup completion menu
-"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabDefaultCompletionType = "context"
 
 
 " run everytime pathogen 
@@ -74,15 +74,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" enable auto-complete every time a HTML file is opened
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-
-" enable CSS auto-complete every time opening a CSS file
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-" enable PHP autocomplete every time you open a PHP file
-"autocmd Filetype php set omnifunc=phpcomplete#CompletePHP
-
+" remap <CTRL> X + <CTRL> O to <CTRL> <SPACE> for code completion
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-x><C-o>
 
 " syntastic settings
 let g:airline#extensions#syntastic#enabled=1
